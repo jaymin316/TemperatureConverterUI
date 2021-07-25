@@ -1,0 +1,90 @@
+<div class="toolbar" role="banner">
+    <span>Temperature Converter</span>
+</div>
+
+<div class="containerDiv">
+    <div class="drawBorder"> 
+        <table class="tableStyle">
+            <tr>
+                <th class="rowLeft"> 
+                    <p>Temperature to convert</p>
+                </th>
+                <th class="rowRight">
+                    <dx-number-box id="temperatureToConvert" (onValueChanged)="inputValueChanged($event)">
+                        <dx-validator>
+                            <dxi-validation-rule type="required" message="Value required"></dxi-validation-rule>
+                        </dx-validator>
+                    </dx-number-box>
+                </th>
+            </tr>
+            <tr>
+                <th class="rowLeft"> 
+                    <p>Convert From</p>
+                </th>
+                <th class="rowRight">
+                    <dx-select-box 
+                        id="convertFrom"
+                        [dataSource]="units"
+                        displayExpr="Name"
+                        valueExpr="ID"
+                        [value]="convertFromID"
+                        (onValueChanged)="onConvertFromChanged($event)"
+                        width="500px" 
+                        class="div-inline">
+                    </dx-select-box>
+                </th>               
+            </tr>
+            <tr>
+                <th class="rowLeft"> 
+                    <p>Convert To</p>
+                </th>
+                <th class="rowRight">
+                    <dx-select-box 
+                        id="ConvertTo"
+                        [dataSource]="units"
+                        displayExpr="Name"
+                        valueExpr="ID"
+                        [value]="convertToID"
+                        (onValueChanged)="onConvertToChanged($event)"
+                        width="500px" 
+                        class="div-inline">
+                    </dx-select-box>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <p>&nbsp;</p>
+                </th>
+            </tr>
+            <tr>
+                <th class="rowLeft"></th>
+                <th class="rowRight">
+                    <dx-button
+                        stylingMode="contained"
+                        text="Convert"
+                        type="default"
+                        [width]="200"
+                        (onClick)="convert()">
+                    </dx-button>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <p>&nbsp;</p>
+                </th>
+            </tr>
+            <tr>
+                <th class="rowLeft bold"> 
+                    <p>Converted Temperature</p>
+                </th>
+                <th class="rowRight bold">
+                    <dx-number-box 
+                        id="convertedTemperature" 
+                        disabled="true"
+                        [value]="convertedTemperatureValue"
+                    ></dx-number-box>
+                </th>
+            </tr>
+        </table>
+    </div>
+</div>
